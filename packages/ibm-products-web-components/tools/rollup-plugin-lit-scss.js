@@ -78,8 +78,15 @@ export default function LitSCSS({
         data: finalContent,
       });
 
+      const carbonPrefix = css
+        .toString()
+        .replace(
+          /cds/g,
+          process.env.CARBON_PREFIX ? process.env.CARBON_PREFIX : 'cds'
+        );
+
       return {
-        code: transformToTemplate(await preprocessor(css.toString(), id)),
+        code: transformToTemplate(await preprocessor(carbonPrefix, id)),
         map: {
           mappings: '',
         },

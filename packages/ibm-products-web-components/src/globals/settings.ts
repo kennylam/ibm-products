@@ -7,7 +7,9 @@
  */
 
 const prefix = 'c4p';
-const carbonPrefix = 'cds';
+const carbonPrefix = process.env.CARBON_PREFIX
+  ? process.env.CARBON_PREFIX
+  : 'cds';
 
 /**
  * A selector selecting tabbable nodes.
